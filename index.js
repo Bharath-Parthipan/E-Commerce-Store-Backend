@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 // utiles
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/usersRouts');
+const categoryRoutes = require("./routes/categoryRoute");
 
 dotenv.config({ path: path.join(__dirname, "config", ".env") });
 
@@ -19,5 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
+app.use('/api/category', categoryRoutes);
 
 app.listen(process.env.PORT, () => console.log(`Server running on port: ${process.env.PORT}`));
