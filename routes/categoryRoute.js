@@ -1,7 +1,8 @@
 const express = require("express");
-const router = express.Router();
 const { authenticate, authorizeAdmin } = require("../middlewares/authMiddleware");
 const { createCategory, updateCategory, removeCategory, listCategory, readCategory } = require("../controllers/categoryController");
+
+const router = express.Router();
 
 router.route('/').post(authenticate, authorizeAdmin, createCategory);
 router.route('/:categoryId').put(authenticate, authorizeAdmin, updateCategory);

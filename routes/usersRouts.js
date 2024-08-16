@@ -1,7 +1,8 @@
 const express = require("express");
-const router = express.Router();
 const { authenticate, authorizeAdmin } = require("../middlewares/authMiddleware");
 const { creatUsers, loginUser, logoutCurrentUser, getAllUsers, getCurrentUserProfile, updateCurrentUserProfile, deleteUserById, getUserById, updateUserById, } = require("../controllers/userController");
+
+const router = express.Router();
 
 router.route('/').post(creatUsers).get(authenticate, authorizeAdmin, getAllUsers);
 router.post('/auth', loginUser);
