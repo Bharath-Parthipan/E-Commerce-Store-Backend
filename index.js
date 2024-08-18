@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+var cors = require("cors");
 
 // utiles
 const connectDB = require('./config/db');
@@ -18,7 +19,11 @@ dotenv.config({ path: path.join(__dirname, "config", ".env") });
 connectDB();
 
 const app = express();
-
+app.use(
+  cors({
+    origin: "https://bharath-e-shop.netlify.app",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
