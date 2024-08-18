@@ -119,15 +119,17 @@ exports.fetchProductById = asyncHandler(async (req, res) => {
 });
 
 exports.fetchAllProducts = asyncHandler(async (req, res) => {
-    try {
-        const products = await Product.find({})
-          .limit(12)
-          .sort({ createAt: -1 });
-        res.json(products);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Server Error" });
-    }
+  try {
+    const products = await Product.find({})
+      .populate("category")
+      .limit(12)
+      .sort({ createAt: -1 });
+
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
 });
 
 exports.addProductReview = asyncHandler(async (req, res) => {
