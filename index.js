@@ -22,6 +22,7 @@ const app = express();
 app.use(
   cors({
     origin: "https://bharath-e-shop.netlify.app",
+    credentials: true,
   })
 );
 app.use(express.json());
