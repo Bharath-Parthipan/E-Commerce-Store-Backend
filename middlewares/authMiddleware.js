@@ -6,11 +6,6 @@ exports.authenticate = asyncHandler(async (req, res, next) => {
   let token;
 
   token = req.cookies.jwt;
-  
-  console.log(req.cookies, "r");
-  console.log(req.cookies.jwt), "jwt";
-
-  
 
   if (token) {
     try {
